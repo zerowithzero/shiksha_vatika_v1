@@ -153,24 +153,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const API_URL = 'http://localhost:3000/api/submit-admission';
 
         try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            });
+            // const response = await fetch(API_URL, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(payload)
+            // });
 
-            const result = await response.json();
+            // const result = await response.json();
 
-            if (!response.ok) {
-                throw new Error(result.error || 'Submission failed');
-            }
+            // if (!response.ok) {
+            //     throw new Error(result.error || 'Submission failed');
+            // }
 
             // Success
             showNotification(state.translations['success_message'] || 'Application Submitted Successfully!', 'success');
             admissionForm.reset();
-            console.log('Form submission result:', result);
+            // console.log('Form submission result:', result);
 
         } catch (error) {
             console.error('Form submission error:', error);
