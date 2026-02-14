@@ -1,0 +1,110 @@
+PROJECT: Shiksha Vatika Public School - Official Website
+TECH STACK: HTML5, CSS3 (BEM-like structure), Vanilla JavaScript (ES6+)
+CDNS: Google Fonts, Font Awesome (or Material Icons), Google Maps embed, Crisp/WhatsApp widget CDN
+LANGUAGES: English + Hindi (language switcher)
+RESPONSIVE: Mobile-first, breakpoints: 360px, 768px, 1024px
+
+GOALS:
+- Premium, trust-inspiring one-page site + “Admissions” form page
+- Fast (<= 1s TTFB not required but target under 2s load on 3G)
+- Accessible (WCAG AA basics: alt tags, semantic tags, keyboard nav, color contrast)
+- SEO basics: meta tags, schema for Organization, sitemap.xml, robots.txt
+- Easy to update (single JS config file for content copy + translations)
+- Contact actions: direct phone links, WhatsApp button, email contact form (POST to endpoint or integrate with Google Forms/Sheets)
+- Deployable to static hosts: Netlify, Vercel, GitHub Pages, or any shared hosting.
+
+CORE PAGES / SECTIONS:
+- index.html (main landing)
+  - Header: logo text, language switcher (EN / हिंदी), top contact strip with phone icons
+  - Hero: "Admissions Open 2026-27", pupil image (use supplied), CTA: Enroll Now (anchor to form)
+  - About / Why Choose Us: CBSE, Nursery-VIII, Free Admission highlights
+  - Facilities: Smart Classes, Science & Computer Labs, Sports & Activities, Safe Campus, Transport, CCTV
+  - Curriculum & Extra-curricular: list (Spoken English, Sanskrit, Urdu, Painting, Yoga, Martial Arts)
+  - Teacher section (short): "Highly qualified & trained teachers"
+  - Gallery (2-6 images, lazy-loaded)
+  - Admissions / Enroll Form: name, age, class applying for, parent details, contact, preferred language, message, file upload (optional), CAPTCHA (basic).
+  - Contact / Map / Footer: phone numbers + address Pindaruch, Darbhanga, Bihar, social link to Instagram @shiksha_vatika_public_school
+  - Privacy & Terms minimal pages
+
+- enroll.html (POST or AJAX to Google Form or configured email service)
+- success.html (after form submission) or inline success message
+- sitemap.xml, robots.txt
+
+FILE STRUCTURE (suggested)
+/
+|-- index.html
+|-- enroll.html
+|-- success.html
+|-- manifest.json (for PWA icon + metadata)
+|-- assets/
+|   |-- images/
+|   |   |-- hero-kid.jpg (from your Instagram images, web-optimised)
+|   |   |-- logo.png / logo.svg (text-based)
+|   |   |-- gallery-1.jpg ...
+|   |-- icons/
+|   |-- css/
+|   |   |-- styles.css
+|   |-- js/
+|       |-- i18n.js      (translation strings)
+|       |-- main.js      (behavior: menu, language-switch, form submit, lazy load)
+|       |-- validators.js
+|-- docs/
+|   |-- content-copy-en.json
+|   |-- content-copy-hi.json
+|-- sitemap.xml
+|-- robots.txt
+|-- README.md (deploy + content editing instructions)
+
+DESIGN SPECS
+- Fonts: Poppins or Montserrat for headings, Roboto for body (via Google Fonts).
+- Colour palette (derived from images):
+  - Primary deep blue: #083a8b (hero background)
+  - Accent yellow/gold: #f5b400
+  - Green highlight: #1e8f4f
+  - Dark navy for text: #0b2136
+  - Soft white background: #f7f9fb
+- Buttons: rounded 8px, subtle shadow, hover transform -2px
+- Card radius: 12px, 2px soft shadow on desktop
+- Grid: CSS Grid for layouts, Flexbox for lists
+- Images: use srcset for responsive images and lazy load
+
+LANGUAGE / I18N
+- Use a single JS translation file per language (`content-copy-en.json`, `content-copy-hi.json`)
+- Language selection updates visible text and `lang` attribute on `<html>`
+- Persist language in `localStorage`
+- Translate all buttons, headings, form labels, success messages and footer.
+
+FORMS / BACKEND (no server required; static-friendly options)
+1) Preferred (no-code): Submit form to Google Forms/Sheets endpoint (AJAX) — provide docs on how to map fields.
+2) Alternative: Send POST via free form service (Formspree, Getform) — configure single endpoint in `config.js`.
+3) Option: Create a simple PHP form handler (if hosting supports PHP) sending email, saving attachments.
+
+ANALYTICS & TOOLS
+- Optional Google Analytics or Plausible (privacy friendly)
+- Add Google My Business details (owner to claim)
+- Add OG tags for social sharing (image, title, description)
+
+SEO & MICRODATA
+- Add JSON-LD organization schema:
+  - name: Shiksha Vatika Public School Pindaruch
+  - telephone: +91 95765 27635, +91 92949 61947
+  - address: Pindaruch, Darbhanga, Bihar 847306
+  - sameAs: Instagram URL
+- Page meta tags: title, description (EN/HI), keywords, canonical
+
+PERFORMANCE
+- Serve compressed images (webp as preferred)
+- Defer non-critical JS
+- Inline critical CSS for hero above fold
+- Use preconnect for Google Fonts
+
+ACCESSIBILITY
+- Alt on images
+- Color contrast checked for text vs background
+- Logical heading order (H1 on hero)
+- Focus outline visible for keyboard navigation
+
+DELIVERABLES
+- Full production ready working code
+- Admin guide (one page) with how to edit copy (content JSON) and change phone numbers, images, and enrollment endpoints
+
